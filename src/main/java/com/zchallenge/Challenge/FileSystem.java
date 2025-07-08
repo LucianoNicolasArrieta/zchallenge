@@ -44,7 +44,7 @@ public class FileSystem {
             Archivo nuevoArchivo = new Archivo(fileName);
             directorioActual.getHijos().add(nuevoArchivo);
         } else {
-            throw new RuntimeException("El nombre del archivo ya existe.");
+            throw new RuntimeException("El nombre del archivo ya existe");
         }
     }
 
@@ -60,7 +60,7 @@ public class FileSystem {
     private boolean nombreArchivoValido(String nombre) {
         return directorioActual.getHijos().stream()
                 .filter(hijo -> hijo.getClass().equals(Archivo.class)
-                        && !hijo.getNombre().equals(nombre))
+                        && hijo.getNombre().equals(nombre))
                 .toList().isEmpty();
 
         // Faltarian verificaciones de caracteres especiales en el nombre del archivo.
