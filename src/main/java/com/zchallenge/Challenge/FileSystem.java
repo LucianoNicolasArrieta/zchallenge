@@ -65,4 +65,8 @@ public class FileSystem {
 
         // Faltarian verificaciones de caracteres especiales en el nombre del archivo.
     }
+
+    public void rm(String nombre) {
+        directorioActual.getHijos().removeIf(hijo -> hijo.getNombre().equals(nombre));
+    }
 }

@@ -74,4 +74,13 @@ public class FileSystemTest {
 
         Assertions.assertThrows(RuntimeException.class, () -> fileSystem.touch("hello.txt"));
     }
+
+    @Test
+    public void testEliminarArchivo() {
+        fileSystem.touch("hello.txt");
+        fileSystem.rm("hello.txt");
+
+        List<String> ls = fileSystem.ls();
+        Assertions.assertTrue(ls.isEmpty());
+    }
 }
