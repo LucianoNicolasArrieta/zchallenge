@@ -1,5 +1,8 @@
 package com.zchallenge.Challenge;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class FileSystem {
 
     private Directorio directorioActual;
@@ -36,14 +39,28 @@ public class FileSystem {
     }
 
     public void touch(String fileName) {
-        // Si es valido, lo crea en el directorio donde se encuentra
+        if (nombreArchivoValido(fileName)) {
+            Archivo nuevoArchivo = new Archivo(fileName);
+            directorioActual.getHijos().add(nuevoArchivo);
+        } else {
+            throw new RuntimeException("El nombre del archivo ya existe.");
+        }
     }
 
-    public void ls() {
-        // Lista archivos y carpetas en el directorio actual
+    public List<String> ls() {
+        return directorioActual.getHijos().stream().map(hijo -> hijo.getNombre()).collect(Collectors.toList());
     }
 
     public void pwd() {
-        // Muestra el directorio/path actual.
+        String pathActual = directorioActual.getPath();
+    }
+
+    private boolean nombreArchivoValido(String nombre) {
+        return directorioActual.getHijos().stream()
+                .filter(hijo -> hijo.getClass().equals(Archivo.class)
+                        && !hijo.getNombre().equals(nombre))
+                .toList().isEmpty();
+
+        // Faltarian verificaciones de caracteres especiales en el nombre del archivo.
     }
 }

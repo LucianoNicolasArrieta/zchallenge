@@ -27,4 +27,12 @@ public class Directorio implements EntidadFileSystem{
     public Directorio getPadre() {
         return padre;
     }
+
+    public String getPath() {
+        if (padre != null) {
+            return padre.getPath() + "/";
+        } else {
+            return "";
+        }
+    }
 }
