@@ -12,6 +12,39 @@ public class FileSystem {
     }
 
     public void mkdir(String nombre) {
+        /*
+        INTENTO DEL BONUS
+        No quedo funcionando porque no tengo mas tiempo
+        Deberia creo haber empezado con el cd para evitar tener que hacer el while
+        Pero la idea era dividir el path que recibo con "/"
+        Y hacer un cd por cada uno menos el ultimo que va a ser el directorio a crear.
+        Lo mismo haria para el touch().
+        Y para el cd() creo que seria mas facil ya que solo haria un cd por cada uno.
+         */
+
+//        String[] partesRuta = nombre.split("/");
+//        if (partesRuta.length > 1) {
+//            int i;
+//            for (i = 0; i < partesRuta.length - 2; i++) {
+//                cd(partesRuta[i]);
+//            }
+//            mkdir(partesRuta[partesRuta.length - 1]);
+//            while (i != 0) {
+//                cd("..");
+//                i--;
+//            }
+//        } else {
+//            if (!directorioActual.getHijos().stream()
+//                    .filter(hijo -> hijo.getClass().equals(Directorio.class))
+//                    .map(hijo -> hijo.getNombre())
+//                    .toList().contains(nombre)) {
+//                Directorio nuevoDirectorio = new Directorio(nombre, directorioActual);
+//                directorioActual.getHijos().add(nuevoDirectorio);
+//            } else {
+//                throw new RuntimeException("Ya existe un directorio con ese nombre");
+//            }
+//        }
+
         if (!directorioActual.getHijos().stream()
                 .filter(hijo -> hijo.getClass().equals(Directorio.class))
                 .map(hijo -> hijo.getNombre())

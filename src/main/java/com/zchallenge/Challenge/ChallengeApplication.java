@@ -24,6 +24,19 @@ public class ChallengeApplication {
 
 		fs.cd("documents");
 		System.out.println(fs.pwd());
+//
+//		fs.cd("..");
+//		fs.cd("..");
+//		fs.mkdir("files/documents/2025");
+//
+//		fs.mkdir("prueba");
+//		System.out.println(fs.ls());
+//
+//		fs.cd("files");
+//		fs.cd("documents");
+//		fs.cd("2025");
+//		System.out.println(fs.pwd());
+//
 	}
 
 }
