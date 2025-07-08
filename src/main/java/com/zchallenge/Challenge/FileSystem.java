@@ -26,15 +26,16 @@ public class FileSystem {
     public void cd(String dirName) {
         if (dirName.equals("..")) {
             directorioActual = directorioActual.getPadre();
-        }
-        EntidadFileSystem directorioAMoverse = directorioActual.getHijos().stream()
-                .filter(hijo -> hijo.getNombre().equals(dirName) &&
-                        hijo.getClass().equals(Directorio.class))
-                .toList().get(0);
-        if (directorioAMoverse != null) {
-            directorioActual = (Directorio) directorioAMoverse;
         } else {
-            throw new RuntimeException("El directorio especificado no existe");
+            EntidadFileSystem directorioAMoverse = directorioActual.getHijos().stream()
+                    .filter(hijo -> hijo.getNombre().equals(dirName) &&
+                            hijo.getClass().equals(Directorio.class))
+                    .findFirst().orElse(null);
+            if (directorioAMoverse != null) {
+                directorioActual = (Directorio) directorioAMoverse;
+            } else {
+                throw new RuntimeException("El directorio especificado no existe");
+            }
         }
     }
 
@@ -51,8 +52,9 @@ public class FileSystem {
         return directorioActual.getHijos().stream().map(hijo -> hijo.getNombre()).collect(Collectors.toList());
     }
 
-    public void pwd() {
+    public String pwd() {
         String pathActual = directorioActual.getPath();
+        return pathActual;
     }
 
     private boolean nombreArchivoValido(String nombre) {

@@ -30,9 +30,9 @@ public class Directorio implements EntidadFileSystem{
 
     public String getPath() {
         if (padre != null) {
-            return padre.getPath() + "/";
+            return padre.getPath() + "/" + getNombre();
         } else {
-            return "";
+            return getNombre();
         }
     }
 }
